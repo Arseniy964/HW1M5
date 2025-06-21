@@ -5,8 +5,8 @@ import com.example.hw1m5.domain.repository.CounterRepository
 
 class GetCountUseCase (
     private val repository: CounterRepository
-) {
-    fun execute(): Count {
-        return repository.getCount()
-    }
+){
+    fun getCount() =
+        repository.getCount()
+
 }

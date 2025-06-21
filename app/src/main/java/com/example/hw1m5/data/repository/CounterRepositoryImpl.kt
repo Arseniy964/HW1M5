@@ -6,21 +6,20 @@ import com.example.hw1m5.domain.model.Count
 import com.example.hw1m5.domain.repository.CounterRepository
 
 class CounterRepositoryImpl: CounterRepository {
-    private val db = CounterDataSource()
+    private var count = 0
+    private var operation = "+"
+
     override fun increment() {
-        db.increment()
+        count ++
+        operation = "+"
     }
 
     override fun decrement() {
-        db.decrement()
+        count --
+        operation = "-"
     }
 
     override fun getCount(): Count {
-        val response: CountDto = db.getCount()
-        return Count(
-            count = response.count,
-            isIncrement = response.isIncrement
-        )
-
+        return Count(count, operation)
     }
 }
